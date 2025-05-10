@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель | Вертебра</title>
+    <link rel="stylesheet" href="/Project_Ortosalon/public/css/main.css">
+    <style>
+        /* Дополнительные стили для админки */
+        .admin-container {
+            padding: 40px 0;
+            min-height: calc(100vh - 160px);
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .admin-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .admin-btn {
+            background: #2c786c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .admin-btn:hover {
+            background: #235d54;
+        }
+        
+        .admin-btn.danger {
+            background: #e74c3c;
+        }
+        
+        .admin-btn.danger:hover {
+            background: #c0392b;
+        }
+        
+        .service-editor {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .editor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .image-preview {
+            width: 100%;
+            height: 150px;
+            background-color: #f5f5f5;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        
+        .editor-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Вертебра | Админ-панель</div>
+            <nav>
+                <ul>
+                    <li><a href="/Project_Ortosalon/public/index.html" class="btn">На сайт</a></li>
+                    <li><a href="/Project_Ortosalon/public/logout.php" class="btn danger">Выйти</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Основной контент -->
+    <main class="admin-container">
+        <div class="container">
+            <div class="admin-header">
+                <h1 class="section-title">Управление услугами</h1>
+                <div class="admin-actions">
+                    <button id="addServiceBtn" class="admin-btn">+ Добавить услугу</button>
+                </div>
+            </div>
+            
+            <div id="servicesList">
+                <!-- Сюда будут загружаться существующие услуги -->
+                <div class="service-editor" data-id="1">
+                    <div class="editor-grid">
+                        <div>
+                            <div class="image-preview" style="background-image: url('/Project_Ortosalon/public/img/service1.jpg');"></div>
+                            <div class="form-group">
+                                <label for="image1">Изображение:</label>
+                                <input type="file" id="image1" class="form-control image-input">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <label for="title1">Название услуги:</label>
+                                <input type="text" id="title1" class="form-control" value="Консультация ортопеда">
+                            </div>
+                            <div class="form-group">
+                                <label for="price1">Цена (руб.):</label>
+                                <input type="number" id="price1" class="form-control" value="1500">
+                            </div>
+                            <div class="form-group">
+                                <label for="desc1">Описание:</label>
+                                <textarea id="desc1" class="form-control" rows="4">Комплексный осмотр и составление плана лечения</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="editor-actions">
+                        <button class="admin-btn danger">Удалить</button>
+                        <button class="admin-btn">Сохранить</button>
+                    </div>
+                </div>
+                
+                <!-- Пример второй услуги -->
+                <div class="service-editor" data-id="2">
+                    <div class="editor-grid">
+                        <div>
+                            <div class="image-preview" style="background-image: url('/Project_Ortosalon/public/img/service2.jpg');"></div>
+                            <div class="form-group">
+                                <label for="image2">Изображение:</label>
+                                <input type="file" id="image2" class="form-control image-input">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <label for="title2">Название услуги:</label>
+                                <input type="text" id="title2" class="form-control" value="Ортопедический массаж">
+                            </div>
+                            <div class="form-group">
+                                <label for="price2">Цена (руб.):</label>
+                                <input type="number" id="price2" class="form-control" value="2500">
+                            </div>
+                            <div class="form-group">
+                                <label for="desc2">Описание:</label>
+                                <textarea id="desc2" class="form-control" rows="4">Специализированная техника для коррекции осанки</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="editor-actions">
+                        <button class="admin-btn danger">Удалить</button>
+                        <button class="admin-btn">Сохранить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <p>© 2023 Ортопедический салон "Вертебра". Административная панель.</p>
+        </div>
+    </footer>
+    
+    <!-- Скрипты -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Добавление новой услуги
+            document.getElementById('addServiceBtn').addEventListener('click', function() {
+                const newId = Date.now(); // Временный ID
+                const newService = document.createElement('div');
+                newService.className = 'service-editor';
+                newService.dataset.id = newId;
+                newService.innerHTML = `
+                    <div class="editor-grid">
+                        <div>
+                            <div class="image-preview"></div>
+                            <div class="form-group">
+                                <label for="image${newId}">Изображение:</label>
+                                <input type="file" id="image${newId}" class="form-control image-input">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <label for="title${newId}">Название услуги:</label>
+                                <input type="text" id="title${newId}" class="form-control" placeholder="Новая услуга">
+                            </div>
+                            <div class="form-group">
+                                <label for="price${newId}">Цена (руб.):</label>
+                                <input type="number" id="price${newId}" class="form-control" placeholder="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="desc${newId}">Описание:</label>
+                                <textarea id="desc${newId}" class="form-control" rows="4" placeholder="Описание услуги"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="editor-actions">
+                        <button class="admin-btn danger">Удалить</button>
+                        <button class="admin-btn">Сохранить</button>
+                    </div>
+                `;
+                
+                document.getElementById('servicesList').prepend(newService);
+                
+                // Обработчик для предпросмотра изображения
+                newService.querySelector('.image-input').addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(event) {
+                            newService.querySelector('.image-preview').style.backgroundImage = `url('${event.target.result}')`;
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            });
+            
+            // Обработчики для существующих элементов
+            document.querySelectorAll('.image-input').forEach(input => {
+                input.addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(event) {
+                            e.target.closest('.editor-grid').querySelector('.image-preview').style.backgroundImage = `url('${event.target.result}')`;
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            });
+            
+            // Здесь нужно добавить AJAX-запросы для сохранения/удаления
+            // Это примерная реализация:
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('admin-btn') && !e.target.classList.contains('danger')) {
+                    // Сохранение услуги
+                    const editor = e.target.closest('.service-editor');
+                    const serviceData = {
+                        id: editor.dataset.id,
+                        title: editor.querySelector('input[type="text"]').value,
+                        price: editor.querySelector('input[type="number"]').value,
+                        description: editor.querySelector('textarea').value
+                    };
+                    
+                    console.log('Сохранение:', serviceData);
+                    alert('Услуга сохранена (в реальности здесь будет AJAX-запрос)');
+                }
+                
+                if (e.target.classList.contains('danger')) {
+                    // Удаление услуги
+                    if (confirm('Вы уверены, что хотите удалить эту услугу?')) {
+                        const editor = e.target.closest('.service-editor');
+                        console.log('Удаление:', editor.dataset.id);
+                        editor.remove();
+                        alert('Услуга удалена (в реальности здесь будет AJAX-запрос)');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

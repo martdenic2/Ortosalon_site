@@ -1,0 +1,256 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+       /* Шапка */
+       header {
+        background: #2c786c;
+        color: white;
+        padding: 20px 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    nav ul {
+        display: flex;
+        list-style: none;
+    }
+    nav ul li {
+        margin-left: 20px;
+    }
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        transition: opacity 0.3s;
+    }
+    nav ul li a:hover {
+        opacity: 0.8;
+    }
+    
+    /* Баннер */
+    .banner {
+        background: url('img/banner.jpg') center/cover;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: white;
+        position: relative;
+    }
+    .banner::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+    }
+    .banner-content {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+    }
+    .banner h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+    .btn {
+        display: inline-block;
+        background: #ff9a3c;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background 0.3s;
+    }
+    .btn:hover {
+        background: #ff7b00;
+    }
+    
+    /* Услуги */
+    .services {
+        padding: 60px 0;
+    }
+    .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 2rem;
+        color: #2c786c;
+    }
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+    .service-card {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .service-img {
+        height: 200px;
+        background: #f5f5f5;
+        background-size: cover;
+    }
+    .service-info {
+        padding: 20px;
+    }
+    .service-info h3 {
+        margin-bottom: 10px;
+        color: #2c786c;
+    }
+    .service-price {
+        font-weight: bold;
+        color: #ff9a3c;
+        margin: 15px 0;
+    }
+    
+    /* Карта */
+    .map-section {
+        padding: 40px 0;
+        background: #f9f9f9;
+    }
+    #map {
+        height: 400px;
+        margin-top: 20px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    /* Подвал */
+    footer {
+        background: #2c786c;
+        color: white;
+        padding: 30px 0;
+        text-align: center;
+    }
+    .footer-contacts {
+        margin-bottom: 20px;
+    }
+    
+    /* Адаптивность */
+    @media (max-width: 768px) {
+        .header-content {
+            flex-direction: column;
+            text-align: center;
+        }
+        nav ul {
+            margin-top: 15px;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 10px;
+        }
+        .banner {
+            height: 300px;
+        }
+        .banner h1 {
+            font-size: 2rem;
+        }
+    }
+
+    /* Добавляем специфичные стили для формы */
+    .auth-container {
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 30px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    }
+    .auth-title {
+        color: #2c786c;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #555;
+    }
+    .form-group input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    .auth-btn {
+        width: 100%;
+        padding: 14px;
+        background: #2c786c;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .auth-btn:hover {
+        background: #235d54;
+    }
+    .auth-links {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .auth-links a {
+        color: #2c786c;
+        text-decoration: none;
+    }
+    /* Дополнения для правильного расположения футера */
+main {
+    flex: 1; /* Главное - этот параметр! */
+    padding: 20px 0;
+}
+
+/* Для страниц авторизации */
+.auth-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 160px); /* Высота шапки + футера */
+    justify-content: center;
+}
+
+/* Для страниц авторизации */
+main.container {
+    flex: 1;
+    display: flex;
+    align-items: center; /* Центрируем форму вертикально */
+    padding: 40px 0; /* Отступы сверху/снизу */
+}
